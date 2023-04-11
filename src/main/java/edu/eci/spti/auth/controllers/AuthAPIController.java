@@ -27,4 +27,14 @@ public class AuthAPIController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping(value = "/passwords")
+    public ResponseEntity<?> login(@RequestParam("user") String user){
+        try{
+            boolean success = authService.sendOTP(user);
+            return new ResponseEntity<>("HOLI", HttpStatus.ACCEPTED);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 }

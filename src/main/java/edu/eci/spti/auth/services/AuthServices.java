@@ -16,4 +16,11 @@ public class AuthServices {
         User storedUser = authParsistence.getUser(loggingIn.getUserName());
         return storedUser.equals(loggingIn);
     }
+
+    public boolean sendOTP(String user) throws AuthException {
+        User storedUser = authParsistence.getUser(user);
+        String otp = authParsistence.generateOTP(storedUser);
+        // Enviar correo
+        return true;
+    }
 }
