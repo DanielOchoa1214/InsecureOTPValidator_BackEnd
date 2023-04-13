@@ -32,7 +32,7 @@ public class AuthAPIController {
     public ResponseEntity<?> login(@RequestParam("user") String user){
         try{
             boolean success = authService.sendOTP(user);
-            return new ResponseEntity<>("HOLI", HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(success, HttpStatus.ACCEPTED);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }

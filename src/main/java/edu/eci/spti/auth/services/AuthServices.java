@@ -20,7 +20,7 @@ public class AuthServices {
     public boolean sendOTP(String user) throws AuthException {
         User storedUser = authParsistence.getUser(user);
         String otp = authParsistence.generateOTP(storedUser);
-        // Enviar correo
+        MailManager.sendMail(user, otp);
         return true;
     }
 }
