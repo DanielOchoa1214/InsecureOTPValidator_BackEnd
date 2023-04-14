@@ -20,6 +20,7 @@ public class AuthImpl implements AuthInteface {
 
     public AuthImpl(){
         users.put("danochoa1412@gmail.com", new User("danochoa1412@gmail.com", "password"));
+        users.put("wiarr17@gmail.com", new User("wiarr17@gmail.com", "123"));
     }
 
     @Override
