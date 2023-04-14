@@ -13,17 +13,17 @@ import javax.mail.internet.MimeMessage;
 
 public class MailManager {
 
-    private static final String HOST = "smtp.gmail.com";
-    private static final String FROM = "seguridadti20231@gmail.com";
-    private static final String PASSWORD = "SPTI2023";
+    private static final String HOST = "outlook.office365.com";
+    private static final String FROM = "arsw-2023@outlook.com";
+    private static final String PASSWORD = "arsw.2023";
 
     public static void sendMail(String to, String otp){
         Properties properties = System.getProperties();
 
-        properties.put("mail.smtp.host", HOST);
-        properties.put("mail.smtp.port", "465");
-        properties.put("mail.smtp.ssl.enable", "true");
         properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", HOST);
+        properties.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -31,7 +31,6 @@ public class MailManager {
             }
         });
         try {
-            System.out.println("HOLISDVSV");
             // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
 

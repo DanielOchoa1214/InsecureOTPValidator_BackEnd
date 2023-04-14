@@ -17,10 +17,15 @@ public class AuthServices {
         return storedUser.equals(loggingIn);
     }
 
-    public boolean sendOTP(String user) throws AuthException {
+    public String sendOTP(String user) throws AuthException {
         User storedUser = authParsistence.getUser(user);
         String otp = authParsistence.generateOTP(storedUser);
         MailManager.sendMail(user, otp);
-        return true;
+        return otp;
+    }
+
+    public boolean verifyOTP(String user, String otp) throws AuthException {
+        String userOTP = authParsistence.getOTP(user);
+        return userOTP.equals(otp);
     }
 }

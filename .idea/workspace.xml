@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55a55f5f-492c-4d41-97d8-b599f98bf194" name="Changes" comment="Envio de OTP a medias">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/services/MailManager.java" afterDir="false" />
+    <list default="true" id="55a55f5f-492c-4d41-97d8-b599f98bf194" name="Changes" comment="Nada sirve AHHHHHHHH">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/controllers/AuthAPIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/controllers/AuthAPIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/persistence/AuthInteface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/persistence/AuthInteface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/persistence/impl/AuthImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/persistence/impl/AuthImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/services/AuthServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/services/AuthServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/services/MailManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/spti/auth/services/MailManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "last_opened_file_path": "/Users/DanielOchoa/Desktop/SPTI/Proyecto/Auth_Back"
+    "last_opened_file_path": "/Users/DanielOchoa/Desktop/SPTI/Proyecto/Auth_Back",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -60,7 +62,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681250656158</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Nada sirve AHHHHHHHH">
+      <created>1681344972992</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681344972992</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -76,6 +85,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Envio de OTP a medias" />
-    <option name="LAST_COMMIT_MESSAGE" value="Envio de OTP a medias" />
+    <MESSAGE value="Nada sirve AHHHHHHHH" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nada sirve AHHHHHHHH" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

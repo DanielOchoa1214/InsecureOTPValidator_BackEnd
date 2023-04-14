@@ -9,13 +9,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class AuthImpl implements AuthInteface {
 
-    private ConcurrentHashMap<String, User> users =  new ConcurrentHashMap<>();
-    private List<Pair<String, String>> activeOTPs = new ArrayList<>();
+    private Map<String, User> users =  new ConcurrentHashMap<>();
+    private Map<String, String> activeOTPs = new ConcurrentHashMap<>();
 
     public AuthImpl(){
         users.put("danochoa1412@gmail.com", new User("danochoa1412@gmail.com", "password"));
@@ -39,11 +40,17 @@ public class AuthImpl implements AuthInteface {
     public String generateOTP(User user) throws AuthException {
         if (!users.containsKey(user.getUserName())) throw new AuthException(AuthException.USER_NOT_FOUND);
         String otp = RandomStringUtils.randomNumeric(4);
-        activeOTPs.add(new Pair<>(user.getUserName(), otp));
+        activeOTPs.put(user.getUserName(), otp);
         setTimeout(() -> {
-            activeOTPs.remove(new Pair<>(user.getUserName(), otp));
-        }, 10000);
+            activeOTPs.remove(user.getUserName());
+        }, 300000);
         return otp;
+    }
+
+    @Override
+    public String getOTP(String user) throws AuthException {
+        if (!users.containsKey(user)) throw new AuthException(AuthException.USER_NOT_FOUND);
+        return activeOTPs.get(user);
     }
 
     private void setTimeout(Runnable runnable, int delay){

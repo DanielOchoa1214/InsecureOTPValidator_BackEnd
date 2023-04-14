@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.ConcurrentMap;
-
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "/auth")
@@ -28,12 +26,23 @@ public class AuthAPIController {
         }
     }
 
-    @GetMapping(value = "/passwords")
-    public ResponseEntity<?> login(@RequestParam("user") String user){
+    @PostMapping(value = "/passwords")
+    public ResponseEntity<?> generateOTP(@RequestBody String user){
         try{
-            boolean success = authService.sendOTP(user);
+            String otp = authService.sendOTP(user);
+            return new ResponseEntity<>(otp, HttpStatus.ACCEPTED);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping(value = "/passwords")
+    public ResponseEntity<?> verifyOTP(@RequestParam("user") String user, @RequestParam("otp") String otp){
+        try{
+            boolean success = authService.verifyOTP(user, otp);
             return new ResponseEntity<>(success, HttpStatus.ACCEPTED);
         } catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
