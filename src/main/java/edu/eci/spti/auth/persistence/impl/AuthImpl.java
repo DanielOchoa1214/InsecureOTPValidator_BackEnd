@@ -41,9 +41,7 @@ public class AuthImpl implements AuthInteface {
         if (!users.containsKey(user.getUserName())) throw new AuthException(AuthException.USER_NOT_FOUND);
         String otp = RandomStringUtils.randomNumeric(4);
         activeOTPs.put(user.getUserName(), otp);
-        setTimeout(() -> {
-            activeOTPs.remove(user.getUserName());
-        }, 300000);
+        setTimeout(() -> activeOTPs.remove(user.getUserName()), 300000);
         return otp;
     }
 
@@ -55,7 +53,7 @@ public class AuthImpl implements AuthInteface {
 
     @Override
     public void setUser(User newUser) throws AuthException {
-        if (!users.containsKey(newUser)) throw new AuthException(AuthException.USER_NOT_FOUND);
+        if (!users.containsKey(newUser.getUserName())) throw new AuthException(AuthException.USER_NOT_FOUND);
         users.put(newUser.getUserName(), newUser);
     }
 
