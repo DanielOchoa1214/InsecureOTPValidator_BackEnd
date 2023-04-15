@@ -6,6 +6,8 @@ import edu.eci.spti.auth.persistence.AuthInteface;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -49,6 +51,20 @@ public class AuthImpl implements AuthInteface {
     public String getOTP(String user) throws AuthException {
         if (!users.containsKey(user)) throw new AuthException(AuthException.USER_NOT_FOUND);
         return activeOTPs.get(user);
+    }
+
+    @Override
+    public void setUser(User newUser) throws AuthException {
+        if (!users.containsKey(newUser)) throw new AuthException(AuthException.USER_NOT_FOUND);
+        users.put(newUser.getUserName(), newUser);
+    }
+
+    @Override
+    public List<Map<String, ?>> getInfo() {
+        List<Map<String, ?>> info = new ArrayList<>();
+        info.add(users);
+        info.add(activeOTPs);
+        return info;
     }
 
     private void setTimeout(Runnable runnable, int delay){

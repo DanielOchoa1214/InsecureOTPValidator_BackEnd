@@ -16,7 +16,7 @@ public class AuthAPIController {
     @Autowired
     AuthServices authService;
 
-    @GetMapping
+    @GetMapping(value = "/login")
     public ResponseEntity<?> login(@RequestParam("user") String user, @RequestParam("password") String password){
         try{
             boolean loggedIn = authService.login(new User(user, password));
@@ -41,6 +41,27 @@ public class AuthAPIController {
         try{
             boolean success = authService.verifyOTP(user, otp);
             return new ResponseEntity<>(success, HttpStatus.ACCEPTED);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping(value = "/passwords")
+    public ResponseEntity<?> changePassword(@RequestBody User user){
+        try{
+            authService.changePassword(user);
+            return new ResponseEntity<>("Your password was changed successfully", HttpStatus.ACCEPTED);
+        } catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping
+    public  ResponseEntity<?> getAll(){
+        try{
+            return new ResponseEntity<>(authService.getAll(), HttpStatus.ACCEPTED);
         } catch (Exception e){
             e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

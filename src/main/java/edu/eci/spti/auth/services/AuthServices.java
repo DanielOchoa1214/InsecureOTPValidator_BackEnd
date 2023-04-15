@@ -6,6 +6,9 @@ import edu.eci.spti.auth.persistence.AuthInteface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class AuthServices {
 
@@ -27,5 +30,13 @@ public class AuthServices {
     public boolean verifyOTP(String user, String otp) throws AuthException {
         String userOTP = authParsistence.getOTP(user);
         return userOTP.equals(otp);
+    }
+
+    public void changePassword(User user) throws AuthException {
+        authParsistence.setUser(user);
+    }
+
+    public List<Map<String, ?>> getAll() {
+        return authParsistence.getInfo();
     }
 }
