@@ -27,10 +27,10 @@ public class AuthAPIController {
     }
 
     @PostMapping(value = "/passwords")
-    public ResponseEntity<?> generateOTP(@RequestBody String user){
+    public ResponseEntity<?> generateOTP(@RequestBody User user){
         try{
-            String otp = authService.sendOTP(user);
-            return new ResponseEntity<>(otp, HttpStatus.ACCEPTED);
+            String otp = authService.sendOTP(user.getUserName());
+            return new ResponseEntity<>(otp, HttpStatus.CREATED);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }

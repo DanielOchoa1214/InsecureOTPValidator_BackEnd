@@ -3,12 +3,9 @@ package edu.eci.spti.auth.persistence.impl;
 import edu.eci.spti.auth.model.User;
 import edu.eci.spti.auth.persistence.AuthException;
 import edu.eci.spti.auth.persistence.AuthInteface;
-import javafx.util.Pair;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
